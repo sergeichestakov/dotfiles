@@ -222,3 +222,5 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+"""" clear highlight with <esc> after a search
+nnoremap <C-h> :noh<return>
