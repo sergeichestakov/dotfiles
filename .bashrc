@@ -149,9 +149,6 @@ alias open='xdg-open'
 alias vim='nvim'
 
 # Library or language specific variables 
-export HOUNDIFY_CLIENT_ID='UMBRDzNYVTG8Ceb7LynZtw=='
-export HOUNDIFY_CLIENT_KEY='vK6kqTjNf-QpBMAtO18AIALedjP0_N_sMYkg0rsiRsfQwVj5l-j6wWucdp7B_wI39n91CeMgZ5nnGzliUQbYIQ=='
-export GOPATH='/home/sergeichestakov/Documents/ECS/ECS140/ecs140a-hw5'
 export FLASK_APP=app.py
 export PATH=${HOME}/tools/vim/bin:${HOME}/.npm-global/bin:${HOME}/.cargo/bin:$PATH
 
