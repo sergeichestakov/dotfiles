@@ -1,0 +1,15 @@
+{
+  "suggest.enablePreview": true,
+  "suggest.noselect": false,
+  "eslint.autoFixOnSave": false,
+  "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "javascriptreact",
+    "typescript.tsx",
+    "graphql"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+	"optOut": false,
+	"lastUpdateCheck": 1583024447391,
+	"update": {
+		"latest": "6.2.1",
+		"current": "6.2.0",
+		"type": "patch",
+		"name": "patch-package"
+	}
+}
