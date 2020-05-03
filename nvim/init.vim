@@ -70,14 +70,13 @@ set smarttab
 set cindent
 set tabstop=2
 set shiftwidth=2
-" always uses spaces instead of tab characters
 set expandtab
 
 " allow scrolling in iTerm
 set mouse=a
 
 " Allow using system clipboard
-set clipboard+=unnamed 
+set clipboard^=unnamed,unnamedplus
 
 " Better split defaults
 set splitbelow
@@ -91,8 +90,14 @@ let g:mapleader=","
 au FocusGained,BufEnter * :silent! !
 au FocusLost,WinLeave * :silent! w
 
-" Ayu colorscheme
+" Colors in tmux
+let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
+
+set background=dark
 set termguicolors     " enable true colors support
+
+" Ayu colorscheme
 " let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
 " colorscheme ayu
@@ -102,7 +107,9 @@ set termguicolors     " enable true colors support
 " let g:gruvbox_contrast_light = 'hard'
 " let g:gruvbox_italic = 1
 " colorscheme gruvbox
-"
+
+set t_Co=256
+set t_ut=
 
 " Palenight colorscheme
 let g:palenight_terminal_italics=1
