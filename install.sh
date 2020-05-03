@@ -29,6 +29,7 @@ OH_MY_ZSH_CONFIG="$HOME/.oh-my-zsh"
 # Functions and variables
 #-----------------------------------------------------
 CURRENT_PATH=$(pwd)
+UNAME=$(uname)
 
 command_exists() {
   type "$1" &>/dev/null
@@ -78,7 +79,7 @@ symlink_multiple() {
 #-----------------------------------------------------
 
 
-if ! command_exists brew; then
+if ! command_exists brew && [ "$UNAME" = "Darwin" ]; then
   install_homebrew
 fi
 
