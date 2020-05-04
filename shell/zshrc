@@ -16,6 +16,9 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+unalias gcb
+
+gcb() { git checkout -b "@sergeichestakov/$@"; }
 cdl() { cd "$@" && ls; }
 
 export LANG=en_US.UTF-8
@@ -27,9 +30,6 @@ export TMUXCONF=$HOME/.tmux.conf
 export FZF_DEFAULT_COMMAND='rg --color auto --files'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-alias g='git'
-alias gs='git status'
-alias ggpush='git push -u origin $(git_current_branch)'
 alias cat='bat'
 alias python='python3'
 alias vim='nvim'
