@@ -80,7 +80,10 @@ symlink_multiple() {
 
 
 if ! command_exists brew && [ "$UNAME" = "Darwin" ]; then
+  echo "    Installing homebrew"
   install_homebrew
+  echo "    Installing brew packages"
+  xargs brew install < homebrew/brews.txt
 fi
 
 if ! command_exists curl; then
@@ -146,4 +149,5 @@ fi
 TMUX_FILES=("tmux.conf")
 
 symlink_multiple $TMUX_DIR $TMUX_FILES
+ln -sf ./tmux/ide /usr/local/bin/ide
 

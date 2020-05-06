@@ -36,6 +36,7 @@ pyenv-virtualenv
 python
 readline
 ripgrep
+screenfetch
 sqlite
 the_silver_searcher
 tmux
