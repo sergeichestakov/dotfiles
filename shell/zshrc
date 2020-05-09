@@ -35,10 +35,11 @@ alias python='python3'
 alias vim='nvim'
 alias reattach='tmux attach-session -t'
 alias ggpush='git push -u origin "$(git_current_branch)"'
-# alias tmux='env TERM=screen-256color-italic tmux'
+[ $(uname) = "Darwin" ] && alias tmux='env TERM=screen-256color-italic tmux'
 
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local

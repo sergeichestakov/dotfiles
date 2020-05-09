@@ -46,13 +46,17 @@ install_oh_my_zsh() {
 }
 
 install_plug_nvim() {
-  curl -fLo "NEOVIM_CONFIG/autoload/plug.vim" https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  curl -fLo "$NEOVIM_CONFIG/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
 install_nvim_folder() {
   mkdir -p "$NEOVIM_CONFIG/autoload"
   install_plug_nvim
   ln -sf "$CURRENT_PATH/$NEOVIM_DIR/init.vim" "$NEOVIM_CONFIG/init.vim"
+}
+
+install_tpm () {
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
 
 symlink_multiple() {
@@ -78,12 +82,19 @@ symlink_multiple() {
 # Basic requirements check
 #-----------------------------------------------------
 
+if ! command_exists git; then
+  echo "    Install git first"
+  exit 1
+fi
 
 if ! command_exists brew && [ "$UNAME" = "Darwin" ]; then
   echo "    Installing homebrew"
   install_homebrew
   echo "    Installing brew packages"
   xargs brew install < homebrew/brews.txt
+  echo "    Installing nerd fonts"
+  brew tap homebrew/cask-fonts
+  brew cask install font-hack-nerd-font
 fi
 
 if ! command_exists curl; then
@@ -149,5 +160,8 @@ fi
 TMUX_FILES=("tmux.conf")
 
 symlink_multiple $TMUX_DIR $TMUX_FILES
-ln -sf ./tmux/ide /usr/local/bin/ide
+
+[ ! -d "$HOME/.tmux/plugins/tpm" ] && install_tpm
+cp ./tmux/ide /usr/local/bin/
+tic ./tmux/screen-256color-italic.terminfo
 
