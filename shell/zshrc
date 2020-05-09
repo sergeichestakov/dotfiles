@@ -21,6 +21,9 @@ unalias gcb
 gcb() { git checkout -b "@sergeichestakov/$@"; }
 cdl() { cd "$@" && ls; }
 
+autoload -U promptinit; promptinit
+prompt pure
+
 export LANG=en_US.UTF-8
 export EDITOR='nvim'
 export VISUAL='nvim'
