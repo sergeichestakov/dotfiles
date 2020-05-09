@@ -27,6 +27,7 @@ export VISUAL='nvim'
 export INITVIM=$HOME/.config/nvim/init.vim
 export ZSHRC=$HOME/.zshrc
 export TMUXCONF=$HOME/.tmux.conf
+export NVM_DIR=$HOME/.nvm
 export FZF_DEFAULT_COMMAND='rg --color auto --files'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -41,5 +42,9 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
