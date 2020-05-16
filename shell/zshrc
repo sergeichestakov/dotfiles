@@ -24,6 +24,8 @@ cdl() { cd "$@" && ls; }
 autoload -U promptinit; promptinit
 prompt pure
 
+bindkey -v
+
 export LANG=en_US.UTF-8
 export EDITOR='nvim'
 export VISUAL='nvim'
@@ -37,6 +39,9 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 alias cat='bat'
 alias python='python3'
 alias vim='nvim'
+alias gs="git status"
+alias gd="git diff"
+alias pr="gh pr view --web"
 alias reattach='tmux attach-session -t'
 alias ggpush='git push -u origin "$(git_current_branch)"'
 [ $(uname) = "Darwin" ] && alias tmux='env TERM=screen-256color-italic tmux'
@@ -44,6 +49,9 @@ alias ggpush='git push -u origin "$(git_current_branch)"'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '`' autosuggest-accept
 
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
