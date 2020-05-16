@@ -95,6 +95,8 @@ if ! command_exists brew && [ "$UNAME" = "Darwin" ]; then
   echo "    Installing nerd fonts"
   brew tap homebrew/cask-fonts
   brew cask install font-hack-nerd-font
+  echo "    Installing fzf key bindings and fuzzy completion"
+  $(brew --prefix)/opt/fzf/install
 fi
 
 if ! command_exists curl; then
