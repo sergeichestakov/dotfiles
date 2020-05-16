@@ -1,6 +1,6 @@
 {
   "suggest.enablePreview": true,
-  "suggest.noselect": false,
+  "suggest.noselect": true,
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
   "coc.preferences.formatOnSaveFiletypes": [
