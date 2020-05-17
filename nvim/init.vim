@@ -25,7 +25,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'flazz/vim-colorschemes'
-Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'tomasiser/vim-code-dark'
@@ -34,33 +34,15 @@ Plug 'ap/vim-css-color'
 Plug 'szw/vim-maximizer'
 Plug 'ayu-theme/ayu-vim'
 
-" Initialize plugin system
 call plug#end()
 
 nmap <C-n> :NERDTreeToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
-
-" open NERDTree automatically
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * NERDTree
-
 let g:NERDTreeGitStatusWithFlags = 1
-"let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-"let g:NERDTreeGitStatusNodeColorization = 1
-"let g:NERDTreeColorMapCustom = {
-    "\ "Staged"    : "#0ee375",  
-    "\ "Modified"  : "#d9bf91",  
-    "\ "Renamed"   : "#51C9FC",  
-    "\ "Untracked" : "#FCE77C",  
-    "\ "Unmerged"  : "#FC51E6",  
-    "\ "Dirty"     : "#FFBD61",  
-    "\ "Clean"     : "#87939A",   
-    "\ "Ignored"   : "#808080"   
-    "\ }                         
-
-
 let g:NERDTreeIgnore = ['^node_modules$']
+
+let g:startify_change_to_dir = 0
 
 set number relativenumber
 
@@ -285,6 +267,8 @@ omap af <Plug>(coc-funcobj-a)
 
 nnoremap <silent> <leader>b :ToggleBlameLine<CR>
 
+nmap <leader>n :NERDTreeFind<CR>
+
 " Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
 " nmap <silent> <C-d> <Plug>(coc-range-select)
 " xmap <silent> <C-d> <Plug>(coc-range-select)
@@ -324,17 +308,23 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+" Go to definition in a split
+nmap <leader>gd :vs<CR>gd
+nmap <leader>gx :sp<CR>gd
+
+" Vim fugitive and git 
+nmap <leader>d :G diff<CR><CR>
+nmap <leader>gf :diffget //2<CR>
+nmap <leader>gj :diffget //3<CR>
+nmap <leader>gs :G<CR>
+
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
-" open ctag in horizontal/vertical split
-nmap <C-\> :vs<CR><C-]>
-" nmap <C-[> :sp<CR><C-]>
-
 nmap <C-p> :Files<CR>
-nnoremap <leader>g :Rg<CR>
+nnoremap <leader>gr :Rg<CR>
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 
