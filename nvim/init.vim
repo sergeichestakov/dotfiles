@@ -130,8 +130,10 @@ function! SyncTree()
   endif
 endfunction
 
-" Highlight currently open buffer in NERDTree
-" autocmd BufEnter * call SyncTree()
+augroup settab
+  autocmd!
+  autocmd BufNewFile,BufRead *.go set noexpandtab
+augroup END
 
 " Force vim to rescan entire buffer when syntax highlighting
 
