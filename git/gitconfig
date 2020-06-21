@@ -2,7 +2,7 @@
 	email = schestakov@ucdavis.edu
 	name = sergeichestakov
 [credential]
-	helper = osxkeychain
+  helper = "!f() { if [ \"$(uname -s)\" = Linux ]; then git credential-store \"$@\"; else git credential-osxkeychain \"$@\"; fi; };f"
 
 [alias]
  # logs
