@@ -17,15 +17,17 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+bindkey -v
+
+if [ $(uname) = "Darwin" ]; then
+  autoload -U promptinit; promptinit
+  prompt pure
+fi
+
 unalias gcb
 
 gcb() { git checkout -b "@sergeichestakov/$@"; }
 cdl() { cd "$@" && ls; }
-
-autoload -U promptinit; promptinit
-prompt pure
-
-bindkey -v
 
 export LANG=en_US.UTF-8
 export EDITOR='nvim'
