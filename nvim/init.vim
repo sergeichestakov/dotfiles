@@ -19,6 +19,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'sheerun/vim-polyglot'
 Plug 'dsznajder/vscode-es7-javascript-react-snippets'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim' 
@@ -73,8 +74,8 @@ set splitright
 let g:mapleader=","
 
 " Trigger autoread when switching buffers or focusing vim
-au FocusGained,BufEnter * :silent! !
-au FocusLost,WinLeave * :silent! w
+au FocusGained,BufEnter *.{js,jsx,ts,tsx} :silent! !
+au FocusLost,WinLeave *.{js,jsx,ts,tsx} :silent! w
 
 " Colors in tmux
 let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
@@ -167,6 +168,21 @@ autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 
 let g:fugitive_pty = 0
+
+" vim-go config
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+
+let g:go_auto_type_info = 1
+
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go nmap <leader>e  <Plug>(go-diagnostics)
+autocmd FileType go nmap <leader>d :GoDecls<CR>
+autocmd FileType go nmap gr :GoReferrers<CR>
 
 " from readme
 " if hidden is not set, TextEdit might fail.
