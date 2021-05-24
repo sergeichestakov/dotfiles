@@ -19,6 +19,7 @@ gdbm
 gettext
 gh
 giflossy
+gifsicle
 git
 git-delta
 git-lfs
