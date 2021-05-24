@@ -1,5 +1,5 @@
 [user]
-  email = schestakov@ucdavis.edu
+  email = me@sergei.com
   name = sergeichestakov
 [credential]
   helper = "!f() { if [ \"$(uname -s)\" = Linux ]; then git credential-store \"$@\"; else git credential-osxkeychain \"$@\"; fi; };f"
