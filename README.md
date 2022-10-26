@@ -9,5 +9,5 @@ Run `./install.sh`
 brew list | xargs -L1 > homebrew/brews.txt
 
 # Install packages
-cat homebrew/brews.txt | xargs brew
+xargs brew install < homebrew/brews.txt
 ```
