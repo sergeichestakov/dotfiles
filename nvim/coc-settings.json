@@ -1,33 +1,24 @@
 {
   "suggest.enablePreview": true,
-  "suggest.noselect": true,
+  "suggest.noselect": false,
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": [
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "javascriptreact"
-  ],
+  "eslint.options": {
+    "rulePaths": ["/Users/sergeichestakov/repl-it-web/script/eslint_rules/build"]
+  },
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
     "typescriptreact",
-    "json",
     "javascriptreact",
-    "typescript.tsx",
+    "json",
     "graphql"
   ],
   "languageserver": {
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod"],
-      "disableWorkspaceFolders": true,
+      "disabledFeatures": ["workspaceFolders"],
       "filetypes": ["go"]
     }
-  },
-  "git.addedSign.hlGroup": "GitGutterAdd",
-  "git.changedSign.hlGroup": "GitGutterChange",
-  "git.removedSign.hlGroup": "GitGutterDelete",
-  "git.topRemovedSign.hlGroup": "GitGutterDelete",
-  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete"
+  }
 }
