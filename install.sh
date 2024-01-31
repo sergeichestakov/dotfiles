@@ -164,6 +164,6 @@ TMUX_FILES=("tmux.conf")
 symlink_multiple $TMUX_DIR $TMUX_FILES
 
 [ ! -d "$HOME/.tmux/plugins/tpm" ] && install_tpm
-cp ./tmux/ide /usr/local/bin/
+sudo cp ./tmux/ide /usr/local/bin/
 tic ./tmux/screen-256color-italic.terminfo
 
