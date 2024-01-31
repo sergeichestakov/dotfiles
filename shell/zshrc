@@ -22,6 +22,7 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 
 if [ $(uname) = "Darwin" ]; then
+  fpath+=("$(brew --prefix)/share/zsh/site-functions")
   autoload -U promptinit; promptinit
   prompt pure
 fi
@@ -51,7 +52,7 @@ export FZF_DEFAULT_COMMAND='rg --color auto --files'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 alias cat='bat'
-alias ls='exa'
+alias ls='eza'
 alias python='python3'
 alias vim='nvim'
 alias gs="git status"
@@ -67,7 +68,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 bindkey '`' autosuggest-accept
 
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
