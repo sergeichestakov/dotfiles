@@ -2,9 +2,6 @@
   "suggest.enablePreview": true,
   "suggest.noselect": false,
   "eslint.autoFixOnSave": true,
-  "eslint.options": {
-    "rulePaths": ["/Users/sergeichestakov/repl-it-web/script/eslint_rules/build"]
-  },
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
@@ -13,12 +10,4 @@
     "json",
     "graphql"
   ],
-  "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "disabledFeatures": ["workspaceFolders"],
-      "filetypes": ["go"]
-    }
-  }
 }
