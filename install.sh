@@ -117,6 +117,11 @@ if ! command_exists brew && [ "$UNAME" = "Darwin" ]; then
   $(brew --prefix)/opt/fzf/install
 fi
 
+if [ "$UNAME" = "Darwin" ]; then
+  echo "Updating macOS defaults"
+  defaults write -g InitialKeyRepeat -int 15
+  defaults write -g KeyRepeat -int 1
+fi
 
 #-----------------------------------------------------
 # ZSH installation
