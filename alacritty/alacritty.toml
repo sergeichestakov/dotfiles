@@ -1,8 +1,10 @@
+[window]
+decorations = "None"
+
 [font]
 size = 14
 
 [colors]
-
 bright.black = '#535353'
 bright.blue = '#9fa9ff'
 bright.cyan = '#8df9ff'
