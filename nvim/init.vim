@@ -23,19 +23,71 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim' 
-Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'flazz/vim-colorschemes'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'tomasiser/vim-code-dark'
 Plug 'alvan/vim-closetag'
 Plug 'ap/vim-css-color'
 Plug 'szw/vim-maximizer'
-Plug 'ayu-theme/ayu-vim'
+Plug 'supermaven-inc/supermaven-nvim'
+Plug 'scottmckendry/cyberdream.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" Avate.nvim deps
+Plug 'stevearc/dressing.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'HakonHarnes/img-clip.nvim'
+Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
 
 call plug#end()
+
+autocmd! User avante.nvim
+
+lua << EOF
+require("supermaven-nvim").setup({})
+
+require('img-clip').setup ({})
+require('avante_lib').load()
+require('avante').setup ({})
+
+require('nvim-treesitter.configs').setup {
+  -- A list of parser names, or "all" (the listed parsers MUST always be installed)
+  ensure_installed = { "bash", "c", "cpp", "go", "html", "javascript", "json", "lua", "python", "rust", "typescript", "yaml", "sql", "tsx", "vim", "markdown" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  highlight = {
+    enable = true,
+  },
+}
+
+require("cyberdream").setup({
+    -- Enable transparent background
+    transparent = true,
+
+    -- Enable italics comments
+    italic_comments = true,
+
+    -- Modern borderless telescope theme - also applies to fzf-lua
+    borderless_telescope = true,
+
+    -- Set terminal colors used in `:terminal`
+    terminal_colors = true,
+
+    -- Improve start up time by caching highlights. Generate cache with :CyberdreamBuildCache and clear with :CyberdreamClearCache
+    cache = false,
+
+    -- Disable or enable colorscheme extensions
+    extensions = {
+        telescope = true,
+        notify = true,
+        mini = true,
+    },
+})
+EOF
 
 nmap <C-n> :NERDTreeToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
@@ -84,23 +136,10 @@ let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
 set termguicolors     " enable true colors support
 
-" Ayu colorscheme
-" let ayucolor="mirage" " for mirage version of theme
-" let ayucolor="dark"   " for dark version of theme
-" colorscheme ayu
-
-" Gruvbox colorscheme
-" let g:gruvbox_contrast_dark = 'hard'
-" let g:gruvbox_contrast_light = 'hard'
-" let g:gruvbox_italic = 1
-" colorscheme gruvbox
-
 set t_Co=256
 set t_ut=
 
-" Palenight colorscheme
-let g:palenight_terminal_italics=1
-colorscheme palenight
+colorscheme cyberdream
 
 hi Quote ctermbg=109 guifg=#83a598
 
@@ -208,10 +247,6 @@ set signcolumn=yes
 " no select by `"suggest.noselect": true` in your configuration file.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
@@ -281,8 +316,16 @@ augroup mygroup
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+xmap <leader>ac  <Plug>(coc-codeaction-selected)
+nmap <leader>ac  <Plug>(coc-codeaction-selected)
+
+vmap <leader>aa  <Plug>(AvanteAsk)
+nmap <leader>aa  <Plug>(AvanteAsk)
+
+vmap <leader>ae  <Plug>(AvanteEdit)
+nmap <leader>ae  <Plug>(AvanteEdit)
+
+vmap <leader>ar  <Plug>(AvantRefresh)
 
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
