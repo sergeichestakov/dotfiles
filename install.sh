@@ -18,11 +18,13 @@ NEOVIM_DIR="nvim"
 SHELL_DIR="shell"
 GIT_DIR="git"
 TMUX_DIR="tmux"
+KITTY_DIR="kitty"
 ALACRITTY_DIR="alacritty"
 
 #-----------------------------------------------------
-# Destintation Paths
+# Destination Paths
 #-----------------------------------------------------
+KITTY_CONFIG="$HOME/.config/kitty"
 NEOVIM_CONFIG="$HOME/.config/nvim"
 NVM_CONFIG="$HOME/.nvm"
 OH_MY_ZSH_CONFIG="$HOME/.oh-my-zsh"
@@ -57,6 +59,13 @@ install_nvim_folder() {
 
   ln -sf "$CURRENT_PATH/$NEOVIM_DIR/init.vim" "$NEOVIM_CONFIG/init.vim"
   ln -sf "$CURRENT_PATH/$NEOVIM_DIR/coc-settings.json" "$NEOVIM_CONFIG/coc-settings.json"
+}
+
+install_kitty_folder() {
+  mkdir -p "$KITTY_CONFIG/themes"
+
+  ln -sf "$CURRENT_PATH/$KITTY_DIR/kitty.conf" "$KITTY_CONFIG/kitty.conf"
+  ln -sf "$CURRENT_PATH/$KITTY_DIR/cyberdream.conf" "$KITTY_CONFIG/themes/cyberdream.conf"
 }
 
 install_node() {
@@ -180,6 +189,11 @@ fi
 ALACRITTY_FILES=("alacritty.toml")
 
 symlink_multiple $ALACRITTY_DIR $ALACRITTY_FILES
+
+#-----------------------------------------------------
+# Kitty
+#-----------------------------------------------------
+install_kitty_folder
 
 #-----------------------------------------------------
 # Installing tmux
