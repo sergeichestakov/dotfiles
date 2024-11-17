@@ -28,6 +28,7 @@ KITTY_CONFIG="$HOME/.config/kitty"
 NEOVIM_CONFIG="$HOME/.config/nvim"
 NVM_CONFIG="$HOME/.nvm"
 OH_MY_ZSH_CONFIG="$HOME/.oh-my-zsh"
+OH_MY_ZSH_CUSTOM_THEMES="$OH_MY_ZSH_CONFIG/custom/themes"
 
 #-----------------------------------------------------
 # Functions and variables
@@ -47,6 +48,11 @@ install_oh_my_zsh() {
   curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
   echo "    Change your default shell to zsh"
   sudo chsh
+
+  if [ ! -d "$OH_MY_ZSH_CUSTOM_THEMES/powerlevel10k" ]; then
+    echo "    Installing powerlevel10k theme"
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  fi
 }
 
 install_plug_nvim() {
