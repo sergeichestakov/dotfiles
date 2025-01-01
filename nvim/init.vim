@@ -40,6 +40,7 @@ Plug 'MunifTanjim/nui.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'HakonHarnes/img-clip.nvim'
 Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+Plug 'robitx/gp.nvim'
 
 call plug#end()
 
@@ -87,6 +88,34 @@ require("cyberdream").setup({
         mini = true,
     },
 })
+
+require("gp").setup({
+  providers = {
+		anthropic = {
+			endpoint = "https://api.anthropic.com/v1/messages",
+			secret = os.getenv("ANTHROPIC_API_KEY"),
+		},
+	},
+  agents = {
+		{
+			provider = "anthropic",
+			name = "ChatClaude-3-5-Sonnet",
+			chat = true,
+			command = false,
+			model = { model = "claude-3-5-sonnet-20241022" },
+			system_prompt = require("gp.defaults").chat_system_prompt,
+		},
+    	{
+			provider = "anthropic",
+			name = "CodeClaude-3-5-Sonnet",
+			chat = false,
+			command = true,
+			model = { model = "claude-3-5-sonnet-20241022" },
+			system_prompt = require("gp.defaults").code_system_prompt,
+		},
+  }
+})
+
 EOF
 
 nmap <C-n> :NERDTreeToggle<CR>
