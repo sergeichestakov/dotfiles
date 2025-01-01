@@ -1,0 +1,12 @@
+theme = Dark Pastel
+font-family = Hack Nerd Font Mono
+font-size = 14
+background-opacity = 0.95
+background-blur-radius = 20
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 0.5
+macos-titlebar-style = transparent
+window-height = 36
+window-width = 120
+window-padding-x = 4
+window-padding-y = 0

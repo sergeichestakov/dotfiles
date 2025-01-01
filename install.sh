@@ -18,13 +18,12 @@ NEOVIM_DIR="nvim"
 SHELL_DIR="shell"
 GIT_DIR="git"
 TMUX_DIR="tmux"
-KITTY_DIR="kitty"
-ALACRITTY_DIR="alacritty"
+GHOSTTY_DIR="ghostty"
 
 #-----------------------------------------------------
 # Destination Paths
 #-----------------------------------------------------
-KITTY_CONFIG="$HOME/.config/kitty"
+GHOSTTY_CONFIG="$HOME/.config/ghostty"
 NEOVIM_CONFIG="$HOME/.config/nvim"
 NVM_CONFIG="$HOME/.nvm"
 OH_MY_ZSH_CONFIG="$HOME/.oh-my-zsh"
@@ -67,11 +66,10 @@ install_nvim_folder() {
   ln -sf "$CURRENT_PATH/$NEOVIM_DIR/coc-settings.json" "$NEOVIM_CONFIG/coc-settings.json"
 }
 
-install_kitty_folder() {
-  mkdir -p "$KITTY_CONFIG/themes"
+install_ghostty_folder() {
+  mkdir -p "$GHOSTTY_CONFIG/themes"
 
-  ln -sf "$CURRENT_PATH/$KITTY_DIR/kitty.conf" "$KITTY_CONFIG/kitty.conf"
-  ln -sf "$CURRENT_PATH/$KITTY_DIR/cyberdream.conf" "$KITTY_CONFIG/themes/cyberdream.conf"
+  ln -sf "$CURRENT_PATH/$GHOSTTY_DIR/config" "$GHOSTTY_CONFIG/config"
 }
 
 install_node() {
@@ -190,16 +188,9 @@ if [ ! -d $NVM_CONFIG ]; then
 fi
 
 #-----------------------------------------------------
-# Alacritty
+# Ghostty
 #-----------------------------------------------------
-ALACRITTY_FILES=("alacritty.toml")
-
-symlink_multiple $ALACRITTY_DIR $ALACRITTY_FILES
-
-#-----------------------------------------------------
-# Kitty
-#-----------------------------------------------------
-install_kitty_folder
+install_ghostty_folder
 
 #-----------------------------------------------------
 # Installing tmux
