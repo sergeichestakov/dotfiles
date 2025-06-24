@@ -102,7 +102,7 @@ require("gp").setup({
 			name = "ChatClaude-3-5-Sonnet",
 			chat = true,
 			command = false,
-			model = { model = "claude-3-5-sonnet-20241022" },
+			model = { model = "claude-sonnet-4-20250514" },
 			system_prompt = require("gp.defaults").chat_system_prompt,
 		},
     	{
@@ -110,7 +110,7 @@ require("gp").setup({
 			name = "CodeClaude-3-5-Sonnet",
 			chat = false,
 			command = true,
-			model = { model = "claude-3-5-sonnet-20241022" },
+			model = { model = "claude-sonnet-4-20250514" },
 			system_prompt = require("gp.defaults").code_system_prompt,
 		},
   }
