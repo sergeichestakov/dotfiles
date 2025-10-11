@@ -29,6 +29,7 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 
 unalias gcb
+unalias gco
 
 gcb() { git checkout -b "@sergeichestakov/$@"; }
 cdl() { cd "$@" && ls; }
@@ -38,6 +39,13 @@ fdb() {
   branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
   branch=$(echo "$branches" | fzf --multi) &&
   git branch -D $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+gco() {
+  local branches branch
+  branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
+  branch=$(echo "$branches" | fzf --multi) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
 export LANG=en_US.UTF-8
