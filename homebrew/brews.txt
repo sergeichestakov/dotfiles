@@ -71,7 +71,6 @@ nginx
 nspr
 nss
 oniguruma
-openssl@1.1
 openssl@3
 pcre
 pcre2
@@ -84,7 +83,6 @@ pyenv
 pyenv-virtualenv
 pygments
 python@3.12
-pyyaml
 readline
 ripgrep
 rlwrap
@@ -100,12 +98,10 @@ tree
 tree-sitter
 unibilium
 utf8proc
-vault
 virtualenv
 wangle
 xz
 yarn
-youtube-dl
 zsh
 zsh-async
 zsh-autosuggestions
